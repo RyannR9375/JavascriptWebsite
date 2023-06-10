@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Ryan Ramos Final Project Checkout</title>
+	<link href="layout.css" type="text/css" rel="stylesheet">
+
+	<script src="global-functions.js"></script>
+	<script type="text/javascript" src="guest-functions.js"></script>
+	<script type="text/javascript" src="cart-functions-objects.js"></script>
+
+	<script>
+		window.onload = function () {
+			setGuest();
+		}
+	</script>
+
+</head>
+
+<body>
+	<script>createLogo();</script>
+<div id="divNavBar">
+    <script>createNavBar();</script>
+</div>
+
+<div id="main">
+<h1>Checkout</h1>
+<div id="shippingDetails">
+	<form action="">
+		<p>Please select a shipping option: <br> 
+
+		<input type="radio" id="noShipping" name="shippingDetails" value="0">
+		<label for="noShipping">No Shipping (In-store pickup) (Free) </label><br>
+
+		<input type="radio" id="standardShipping" name="shippingDetails" value="2">
+		<label for="standardShipping">Standard Shipping ($2) </label><br>
+
+		<input type="radio" id="twoDayShipping" name="shippingDetails" value="5">
+		<label for="twoDayShipping">2-Day Shipping ($5) </label><br>
+
+		<input type="radio" id="overnightShipping" name="shippingDetails" value="10">
+		<label for="overnightShipping">Overnight Shipping ($10) </label><br><br>
+		</p>
+	</form>
+</div>
+<!--PAYMENT METHOD DIV-->
+<div id="paymentMethod">
+	<form action="">
+		<p>
+			<label>
+				Please select a payment method:
+			</label>
+			<select id="paymentMethods" onchange="getPaymentMethod()">
+				<option> Visa Credit </option>
+				<option> MasterCard Credit </option>
+				<option> American Express Credit  </option>
+				<option> Debit Card </option>
+				<option> Pay Pal </option>
+			</select>
+		</p>
+	</form>
+</div>
+<!--PHONE NUMBER DIV-->
+<div id="phoneNumberDIV">
+	<form action="">
+		<p>
+			<label>Phone number: </label>
+			<input type="text" id="phoneNumber" name="phoneNumber">
+			<b>(123-123-1234 format)</b>
+		</p>
+	</form>
+</div>
+<!--PHONE NUMBER ERROR DIV-->
+<div id="phoneNumberDIV_error"> </div>
+<!--ACCOUNT NUMBER DIV-->
+<div id="accountNumber">
+	<form action="">
+		<p>
+			<label>Account number: </label>
+			<input type="text" id="accNumber" name="accNumber">
+			<b>(AA-1234 format)</b>
+		</p>
+	</form>
+</div>
+<!--ACCOUNT NUMBER ERROR DIV-->
+<div id=accountNumberError> </div>
+</div>
+<!--RECEIPT DIV-->
+<div id="receipt"> &nbsp; </div>
+<!--DISCOUNT DIV-->
+<div id="discounts" style="display: none">
+</div>
+<input type="button" value="Process Order" id="btnProcess">
+<script>
+	let ids = ['txtQ1', 'txtQ2']; //ALLOW THIS TO BE CALLED FROM SCRIPT FILE
+
+	document.getElementById("btnProcess").addEventListener("click", function () {
+		let valid = validate();
+		let validAccNum = validateAccNum();
+		let validPhnNum = isValidPhoneNo();
+
+		if (valid && validAccNum && validPhnNum)
+			printReceipt();
+	})
+	</script>
+</body>
+<script>createFooter();</script>
+</html>
+

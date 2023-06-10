@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Ryan Ramos Final Project Home</title>
+	<link href="layout.css" type="text/css" rel="stylesheet">
+
+	<script src ="global-functions.js"></script>
+	<script src ="guest-functions.js"></script>
+
+	<script>
+		window.onload=function(){
+			getUserName();
+			//updateCartTotalQ(); 
+		}
+	</script>    
+</head>
+
+<body>
+	<div id="headerDIV">
+		<div id="loginDIV">
+			<p>Welcome, <script>document.write(getUserName());</script></p>
+			<input type="text" id="username" placeholder="Username" class = "loginBox">
+			<input type="text" id="accountID" placeholder="Account ID" class = "loginBox">
+
+			<input type="button" id="loginButton" value = "Log In">
+			<script>
+                document.getElementById("loginButton").addEventListener("click", function () {
+					switchLogin(localStorage.getItem("isLoggedIn"));
+                })
+			</script>
+		</div>
+		<script>createLogo();</script>
+	</div>
+<div id="divNavBar">
+	<script>createNavBar();</script>
+</div>
+
+<div id="wrapper">
+	<div id="main">
+		<h1>Home</h1>
+		<h3>Welcome to VISOR! We specialize in creating and selling custom neon signs.</h3>
+		<h3>Spice up your home with these fancy lights and colors! All the neighbours will be jealous.</h3>
+	</div>
+</div>
+</body>
+<script>createFooter();</script>
+</html>
+
